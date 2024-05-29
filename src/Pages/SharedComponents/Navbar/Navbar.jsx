@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="bg-red-200 ">
+        <div className="bg-black bg-opacity-25 fixed z-10 w-full text-white">
             <div className="navbar max-w-screen-xl mx-auto ">
   <div className="navbar-start">
     <div className="dropdown">
