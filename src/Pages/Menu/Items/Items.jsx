@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
+
 import MenuItem from "../../SharedComponents/MenuItem/MenuItem";
 
-const Items = () => {
-    const [menu,setMenu] = useState([])
-
-    useEffect(()=>{
-        fetch('menu.json')
-        .then(res => res.json())
-        .then(data => {
-            const popularItems = data.filter(item => item.category === 'popular')
-            setMenu(popularItems)
-        })
-    },[])
-
-    console.log(menu)
+const Items = ({data}) => {
+    console.log(data)    
 
     return (
         <div className="">
             
-            <div className="grid grid-cols-2 gap-x-10 gap-y-6 pt-14 mb-20">
+            <div className="grid grid-cols-2 gap-x-14 gap-y-8 mb-20 pt-5">
                 {
-                    menu?.map(item => <MenuItem item={item} key={item._id}></MenuItem>)
+                    data?.map(item => <MenuItem item={item} key={item._id}></MenuItem>)
                 }
             </div>
         </div>

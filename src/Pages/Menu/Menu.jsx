@@ -5,9 +5,29 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import PopularMenu from "../Home/PopularMenu/PopularMenu";
 import Items from "./Items/Items";
 import MenuCover from "./MenuCover/MenuCover";
+import useMenu from "../../hooks/useMenu";
+
+// images
+import soupImg from './../../assets/menu/soup-bg.jpg'
+import drinksImg from './../../assets/menu/banner3.jpg'
+import saladImg from './../../assets/menu/salad-bg.jpg'
+import pizzaImg from './../../assets/menu/pizza-bg.jpg'
+import dessertImg from './../../assets/menu/dessert-bg.jpeg'
 
 
 const Menu = () => {
+  // load all menu data from the custom hook
+  const [menu] = useMenu();
+  console.log(menu);
+  // filter menu data
+  const salad = menu?.filter((item) => item.category === "salad");
+  const drinks = menu?.filter((item) => item.category === "drinks");
+  const dessert = menu?.filter((item) => item.category === "dessert");
+  const pizza = menu?.filter((item) => item.category === "pizza");
+  const soup = menu?.filter((item) => item.category === "soup");
+  const offered = menu?.filter((item) => item.category === "offered");
+  console.log(salad);
+
   return (
     <div>
       {/* helmet */}
@@ -25,15 +45,39 @@ const Menu = () => {
         heading={"today's offer"}
         subHeading={"Don't miss"}
       ></SectionTitle>
-
       {/* container 1 */}
-      <section className="max-w-screen-xl mx-auto mt-16 ">
+      <section className="max-w-screen-xl mx-auto ">
+        <Items data={offered}></Items>
+        {/* salad */}
         <MenuCover
-          img={menuBG}
-          heading={"OUR MENU"}
-          description={"WOULD YOU LIKE TO TRY A DISH"}
+          img={saladImg}
+          heading={"Salad"}
         ></MenuCover>
-        <Items></Items>
+        <Items data={salad}></Items>
+        {/* soup */}
+        <MenuCover
+          img={soupImg}
+          heading={"soup"}
+        ></MenuCover>
+        <Items data={soup}></Items>
+        {/* pizza */}
+        <MenuCover
+          img={pizzaImg}
+          heading={"pizza"}
+        ></MenuCover>
+        <Items data={pizza}></Items>
+        {/* dessert */}
+        <MenuCover
+          img={dessertImg}
+          heading={"dessert"}
+        ></MenuCover>
+        <Items data={dessert}></Items>
+        {/* drinks */}
+        <MenuCover
+          img={drinksImg}
+          heading={"drinks"}
+        ></MenuCover>
+        <Items data={drinks}></Items>
       </section>
     </div>
   );

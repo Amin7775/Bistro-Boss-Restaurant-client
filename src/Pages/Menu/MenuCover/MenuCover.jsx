@@ -9,6 +9,7 @@ const MenuCover = ({img,heading, description}) => {
       bgImage={img}
       bgImageAlt="the dog"
       strength={-200}
+      className='mb-10'
   >
       <div
           className="hero h-[450px] font-customCinzel"
