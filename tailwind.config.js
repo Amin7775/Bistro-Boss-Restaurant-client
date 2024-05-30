@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        customInter: ["Inter", "sans-serif"]
+        customInter: ["Inter", "sans-serif"],
+        customCinzel: ["Cinzel", "serif"],  
      }
     },
   },
