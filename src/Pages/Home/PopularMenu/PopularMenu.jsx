@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../SharedComponents/MenuItem/MenuItem";
+import useMenu from "../../../hooks/useMenu";
 
 const PopularMenu = () => {
 
-    const [menu,setMenu] = useState([])
+    const [menu] = useMenu()
+    const popularItems = menu?.filter(item => item.category === 'popular')
 
-    useEffect(()=>{
-        fetch('menu.json')
-        .then(res => res.json())
-        .then(data => {
-            const popularItems = data.filter(item => item.category === 'popular')
-            setMenu(popularItems)
-        })
-    },[])
+
+    // old method
+    // const [menu,setMenu] = useState([])
+
+    // useEffect(()=>{
+    //     fetch('menu.json')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         const popularItems = data.filter(item => item.category === 'popular')
+    //         setMenu(popularItems)
+    //     })
+    // },[])
 
     console.log(menu)
 
@@ -22,7 +28,7 @@ const PopularMenu = () => {
             <SectionTitle subHeading={"Popular Items"} heading={"From our menu"}></SectionTitle>
             <div className="grid grid-cols-2 gap-x-10 gap-y-6">
                 {
-                    menu?.map(item => <MenuItem item={item} key={item._id}></MenuItem>)
+                    popularItems?.map(item => <MenuItem item={item} key={item._id}></MenuItem>)
                 }
             </div>
         </div>
