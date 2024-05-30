@@ -11,8 +11,8 @@ const Home = () => {
             <section className="max-w-screen-xl mx-auto">
                 <Category></Category>
                 <PopularMenu></PopularMenu>
-                <Featured></Featured>
             </section>
+                <Featured></Featured>
         </div>
     );
 };
