@@ -2,8 +2,12 @@ import "./../Login/authentication.css";
 import loginImg from "./../../assets/others/authentication2.png";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
   const {createUser} = useContext(AuthContext)
 
@@ -16,6 +20,7 @@ const Register = () => {
     createUser(email,password)
     .then(res =>{
       console.log(res)
+      navigate(from,{replace:true})
     })
   };
 

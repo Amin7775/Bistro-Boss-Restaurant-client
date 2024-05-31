@@ -3,12 +3,18 @@ import loginImg from './../../assets/others/authentication2.png'
 
 // react simple captcha
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Login = () => {
 
+  const {loginUser}=useContext(AuthContext)
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
     const [disabled,setDisabled] = useState(true)
 
     const captchaRef = useRef()
@@ -22,7 +28,12 @@ const Login = () => {
         const form = e.target
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(email,password)
+        // console.log(email,password)
+        loginUser(email,password)
+        .then(res=>{
+          console.log(res.user)
+          navigate(from,{replace:true})
+        })
     }
 
     const handleValidate = () =>{
