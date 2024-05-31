@@ -4,6 +4,7 @@ import loginImg from './../../assets/others/authentication2.png'
 // react simple captcha
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -86,6 +87,7 @@ const Login = () => {
                 </div>
                 <div className="form-control mt-6">
                   <button  disabled={disabled} className="btn bg-neutral-800 text-white py-2 h-full text-lg hover:bg-black transition-all duration-300 ease-in-out transform hover:scale-105">Login</button>
+                  <p className="mt-6">Not a member? <Link to={'/register'} className="font-medium"> Register</Link></p>
                 </div>
               </form>
             </div>
