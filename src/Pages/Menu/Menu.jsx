@@ -8,12 +8,12 @@ import MenuCover from "./MenuCover/MenuCover";
 import useMenu from "../../hooks/useMenu";
 
 // images
-import soupImg from './../../assets/menu/soup-bg.jpg'
-import drinksImg from './../../assets/menu/banner3.jpg'
-import saladImg from './../../assets/menu/salad-bg.jpg'
-import pizzaImg from './../../assets/menu/pizza-bg.jpg'
-import dessertImg from './../../assets/menu/dessert-bg.jpeg'
-
+import soupImg from "./../../assets/menu/soup-bg.jpg";
+import drinksImg from "./../../assets/menu/banner3.jpg";
+import saladImg from "./../../assets/menu/salad-bg.jpg";
+import pizzaImg from "./../../assets/menu/pizza-bg.jpg";
+import dessertImg from "./../../assets/menu/dessert-bg.jpeg";
+import MenuCategory from "./MenuCategory/MenuCategory";
 
 const Menu = () => {
   // load all menu data from the custom hook
@@ -49,35 +49,39 @@ const Menu = () => {
       <section className="max-w-screen-xl mx-auto ">
         <Items data={offered}></Items>
         {/* salad */}
-        <MenuCover
-          img={saladImg}
-          heading={"Salad"}
-        ></MenuCover>
-        <Items data={salad}></Items>
+        <MenuCategory
+          image={saladImg}
+          title={"Salad"}
+          items={salad}
+        ></MenuCategory>
         {/* soup */}
-        <MenuCover
-          img={soupImg}
-          heading={"soup"}
-        ></MenuCover>
-        <Items data={soup}></Items>
+
+        <MenuCategory
+          image={soupImg}
+          title={"soup"}
+          items={soup}
+        ></MenuCategory>
         {/* pizza */}
-        <MenuCover
-          img={pizzaImg}
-          heading={"pizza"}
-        ></MenuCover>
-        <Items data={pizza}></Items>
+
+        <MenuCategory
+          image={pizzaImg}
+          title={"pizza"}
+          items={pizza}
+        ></MenuCategory>
         {/* dessert */}
-        <MenuCover
-          img={dessertImg}
-          heading={"dessert"}
-        ></MenuCover>
-        <Items data={dessert}></Items>
+
+        <MenuCategory
+          image={dessertImg}
+          title={"dessert"}
+          items={dessert}
+        ></MenuCategory>
+
         {/* drinks */}
-        <MenuCover
-          img={drinksImg}
-          heading={"drinks"}
-        ></MenuCover>
-        <Items data={drinks}></Items>
+        <MenuCategory
+          image={drinksImg}
+          title={"drinks"}
+          items={drinks}
+        ></MenuCategory>
       </section>
     </div>
   );
