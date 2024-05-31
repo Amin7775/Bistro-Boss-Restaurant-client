@@ -9,7 +9,7 @@ const Register = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
-  const {createUser} = useContext(AuthContext)
+  const {createUser,updateUser} = useContext(AuthContext)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +20,10 @@ const Register = () => {
     createUser(email,password)
     .then(res =>{
       console.log(res)
-      navigate(from,{replace:true})
+      updateUser(name)
+      .then(()=>{
+        navigate(from,{replace:true})
+      })
     })
   };
 
