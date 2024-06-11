@@ -2,7 +2,7 @@ import "./authentication.css";
 import loginImg from './../../assets/others/authentication2.png'
 
 // react simple captcha
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -15,17 +15,17 @@ const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-    const [disabled,setDisabled] = useState(true)
+    // const [disabled,setDisabled] = useState(true)
 
-    const captchaRef = useRef()
+    // const captchaRef = useRef()
 
-    useEffect(()=>{
-        loadCaptchaEnginge(4); 
-    },[])
+    // useEffect(()=>{
+    //     loadCaptchaEnginge(4); 
+    // },[])
 
     const handleLogin = e =>{
         e.preventDefault()
-        const form = e.target
+        // const form = e.target
         const email = e.target.email.value
         const password = e.target.password.value
         // console.log(email,password)
@@ -36,14 +36,14 @@ const Login = () => {
         })
     }
 
-    const handleValidate = () =>{
-        const user_captcha_value = captchaRef.current.value
-        if(validateCaptcha(user_captcha_value)){
-            setDisabled(false)
-        }else{
-            setDisabled(true)
-        }
-    }
+    // const handleValidate = () =>{
+    //     const user_captcha_value = captchaRef.current.value
+    //     if(validateCaptcha(user_captcha_value)){
+    //         setDisabled(false)
+    //     }else{
+    //         setDisabled(true)
+    //     }
+    // }
 
   return (
     <div className="min-h-screen background-img p-36 flex">
@@ -81,8 +81,9 @@ const Login = () => {
                   />
                   
                 </div>
+                {/* commenting out captcha */}
                 {/* captcha */}
-                <div className="form-control mt-4">
+                {/* <div className="form-control mt-4">
                 
                   <LoadCanvasTemplate />
                   <input
@@ -94,10 +95,10 @@ const Login = () => {
                   />
                 <div>
                     <button onClick={handleValidate} className="btn btn-outline w-full mt-3">Validate Captcha</button>
-                </div>
-                </div>
+                </div> */}
+                {/* </div> */}
                 <div className="form-control mt-6">
-                  <button  disabled={disabled} className="btn bg-neutral-800 text-white py-2 h-full text-lg hover:bg-black transition-all duration-300 ease-in-out transform hover:scale-105">Login</button>
+                  <button  className="btn bg-neutral-800 text-white py-2 h-full text-lg hover:bg-black transition-all duration-300 ease-in-out transform hover:scale-105">Login</button>
                   <p className="mt-6">Not a member? <Link to={'/register'} className="font-medium"> Register</Link></p>
                 </div>
               </form>
