@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -98,6 +99,7 @@ const Register = () => {
                   </button>
                 </div>
               </form>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

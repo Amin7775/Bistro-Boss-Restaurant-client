@@ -6,11 +6,12 @@ import loginImg from './../../assets/others/authentication2.png'
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
 
-  const {loginUser}=useContext(AuthContext)
+  const {loginUser,googleLogin}=useContext(AuthContext)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -44,6 +45,8 @@ const Login = () => {
     //         setDisabled(true)
     //     }
     // }
+
+    // google login
 
   return (
     <div className="min-h-screen background-img p-36 flex">
@@ -102,6 +105,7 @@ const Login = () => {
                   <p className="mt-6">Not a member? <Link to={'/register'} className="font-medium"> Register</Link></p>
                 </div>
               </form>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
