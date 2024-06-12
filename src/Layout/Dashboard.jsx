@@ -1,13 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaBookmark, FaCartShopping, FaList, FaUsers, FaWallet } from "react-icons/fa6";
 import { FaCalendarAlt, FaHome } from "react-icons/fa";
-import { GiStarsStack } from "react-icons/gi";
+// import { GiStarsStack } from "react-icons/gi";
 import { TbStarsFilled } from "react-icons/tb";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   // todo : get isAdmin from database
-  const isAdmin = true;
-
+  const [isAdmin] = useAdmin();
+  // console.log(isAdmin)
   return (
     <div className="flex min-h-full">
       <div className="w-80 min-h-screen bg-orange-400">
