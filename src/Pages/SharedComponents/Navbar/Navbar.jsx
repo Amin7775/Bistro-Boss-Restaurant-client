@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
-import useCarts from "../../../hooks/useCarts";
+// import useCarts from "../../../hooks/useCarts";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,9 +25,12 @@ const Navbar = () => {
       <li>
         <Link to={"/"}>CONTACT US</Link>
       </li>
-      <li>
-        <Link to={"/"}>DASHBOARD</Link>
+      {
+        user && 
+        <li>
+        <Link to={"/dashboard"}>DASHBOARD</Link>
       </li>
+      }
       {user && (
         <li>
           <Link to={'/dashboard/cart'}>

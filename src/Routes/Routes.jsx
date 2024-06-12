@@ -12,6 +12,7 @@ import UserReservation from "../Pages/Dashboard/UserReservation/UserReservation"
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import UserBooking from "../Pages/Dashboard/UserBooking/UserBooking";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -71,7 +72,11 @@ const router = createBrowserRouter([
         path:'userbooking',
         element:<UserBooking></UserBooking>
       },
-      
+      // Admin Routes
+      {
+        path:'allUsers',
+        element:<AllUsers></AllUsers>
+      }
     ]
   }
 ]);
