@@ -50,35 +50,19 @@ const AllUsers = () => {
   };
 //   handle make admin
   const handleMakeAdmin = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "This user will be set as an admin!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.patch(`/users/admin/${id}`).then((res) => {
-          if (res.data.modifiedCount > 1) {
+    axiosSecure.patch(`/users/admin/${id}`)
+    .then(res=>{
+        if(res.data.modifiedCount > 0){
+            refetch()
             Swal.fire({
-              title: "Success!",
-              text: "This user is now an admin",
-              icon: "success",
-            }).then(() => {
-              refetch();
-            });
-          } else {
-            console.log(res)
-            Swal.fire({
-              title: "User is already an admin!",
-              icon: "error",
-            });
-          }
-        });
-      }
-    });
+                position: "center",
+                icon: "success",
+                title: "User Role Has Been Changed",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+    })
   };
 
 
@@ -108,12 +92,17 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                <button
+
+                {   user?.role=='admin' ?
+                    "Admin"
+                    :
+                    <button
                     onClick={() => handleMakeAdmin(user._id)}
                     className="btn bg-orange-400 btn-lg"
                   >
                     <FaUsers className=""></FaUsers>
-                  </button>
+                  </button> 
+                }
                 </td>
                 <td>
                 <button
