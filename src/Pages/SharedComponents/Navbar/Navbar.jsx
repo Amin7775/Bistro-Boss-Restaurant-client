@@ -30,7 +30,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <Link>
+          <Link to={'/dashboard/cart'}>
             <button className="flex items-center">
               <FaCartShopping className=" text-xl"></FaCartShopping>
               <div className="ml-1 badge ">+{cart.length}</div>
