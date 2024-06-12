@@ -18,7 +18,7 @@ import MenuCategory from "./MenuCategory/MenuCategory";
 const Menu = () => {
   // load all menu data from the custom hook
   const [menu] = useMenu();
-  console.log(menu);
+  // console.log(menu);
   // filter menu data
   const salad = menu?.filter((item) => item.category === "salad");
   const drinks = menu?.filter((item) => item.category === "drinks");
@@ -26,7 +26,7 @@ const Menu = () => {
   const pizza = menu?.filter((item) => item.category === "pizza");
   const soup = menu?.filter((item) => item.category === "soup");
   const offered = menu?.filter((item) => item.category === "offered");
-  console.log(salad);
+  // console.log(salad);
 
   return (
     <div>

@@ -2,7 +2,7 @@
 import MenuItem from "../../SharedComponents/MenuItem/MenuItem";
 
 const Items = ({data}) => {
-    console.log(data)    
+    // console.log(data)    
 
     return (
         <div className="">

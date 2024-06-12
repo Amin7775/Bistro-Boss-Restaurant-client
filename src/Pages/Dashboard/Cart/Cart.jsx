@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
-  const [cart,refetch] = useCart();
+  const [cart, refetch] = useCart();
 
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   //   calculate total price
   let totalPrice = cart.reduce((sum, index) => {
@@ -27,29 +27,23 @@ const Cart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        
-        axiosSecure.delete(`/carts/${id}`)
-        .then(res=>{
-            if(res.data.deletedCount > 0){
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success",
-                  })
-                  .then(()=>{
-                    refetch()
-                  })
-            }else{
-                Swal.fire({
-                    title: "Couldn't Delete!",
-                    text: "There has been an error deleting your cart item",
-                    icon: "error",
-                  })
-            }
-        })
-        
-        
-       
+        axiosSecure.delete(`/carts/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            }).then(() => {
+              refetch();
+            });
+          } else {
+            Swal.fire({
+              title: "Couldn't Delete!",
+              text: "There has been an error deleting your cart item",
+              icon: "error",
+            });
+          }
+        });
       }
     });
   };
