@@ -3,11 +3,13 @@ import loginImg from "./../../assets/others/authentication2.png";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
+  const axiosPublic = useAxiosPublic();
 
   const {createUser,updateUser} = useContext(AuthContext)
 
@@ -22,7 +24,15 @@ const Register = () => {
       console.log(res)
       updateUser(name)
       .then(()=>{
-        navigate(from,{replace:true})
+        const userInfo = {
+          name,email
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res=>{
+          if(res.data.insertedId){
+            navigate(from,{replace:true})
+          }
+        })
       })
     })
   };
