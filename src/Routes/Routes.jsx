@@ -13,6 +13,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import UserBooking from "../Pages/Dashboard/UserBooking/UserBooking";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -46,36 +47,36 @@ const router = createBrowserRouter([
   },
   {
     path:'dashboard',
-    element:<Dashboard></Dashboard>,
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
         path:'userhome',
-        element:<UserHome></UserHome>
+        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       },
       {
         path:'reservation',
-        element:<UserReservation></UserReservation>
+        element:<PrivateRoute><UserReservation></UserReservation></PrivateRoute>
       },
       {
         path:'paymenthistory',
-        element:<PaymentHistory></PaymentHistory>
+        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       },
       {
         path:'cart',
-        element:<Cart></Cart>
+        element:<PrivateRoute><Cart></Cart></PrivateRoute>
       },
       {
         path:'addreview',
-        element:<AddReview></AddReview>
+        element:<PrivateRoute><AddReview></AddReview></PrivateRoute>
       },
       {
         path:'userbooking',
-        element:<UserBooking></UserBooking>
+        element:<PrivateRoute><UserBooking></UserBooking></PrivateRoute>
       },
       // Admin Routes
       {
         path:'allUsers',
-        element:<AllUsers></AllUsers>
+        element:<PrivateRoute><AllUsers></AllUsers></PrivateRoute>
       }
     ]
   }
