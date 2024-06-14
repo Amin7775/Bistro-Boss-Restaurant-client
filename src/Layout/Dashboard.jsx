@@ -31,7 +31,7 @@ const Dashboard = () => {
               <li className="px-3 py-2">
                 <NavLink
                   className="flex items-center gap-1"
-                  to={"/dashboard/reservation"}
+                  to={"/dashboard/addItems"}
                 >
                   <FaList/> Add Items
                 </NavLink>
