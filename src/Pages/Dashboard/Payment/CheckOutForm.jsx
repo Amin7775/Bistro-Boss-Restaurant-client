@@ -73,6 +73,20 @@ const CheckOutForm = () => {
         setTransactionId(paymentIntent.id)
       }
     }
+
+    // save the payment in db
+    const payment = {
+      email: user.email,
+      price: totalPrice,
+      data: new Date(),
+      cartId : cart.map(item => item._id),
+      menuItemId : cart.map(item => item.menuId),
+      status : 'pending',
+      transactionId : paymentIntent.id,
+    }
+    
+    const res = await axiosSecure.post('/payments', payment)
+    console.log(res)
   };
 
   return (

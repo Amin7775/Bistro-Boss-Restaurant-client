@@ -8,7 +8,7 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
-import UserReservation from "../Pages/Dashboard/UserReservation/UserReservation";
+// import UserReservation from "../Pages/Dashboard/UserReservation/UserReservation";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
 import UserBooking from "../Pages/Dashboard/UserBooking/UserBooking";
