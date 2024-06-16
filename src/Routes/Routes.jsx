@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../Pages/Dashboard/ManageItem/ManageItems";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 
@@ -57,8 +58,8 @@ const router = createBrowserRouter([
         element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       },
       {
-        path:'reservation',
-        element:<PrivateRoute><UserReservation></UserReservation></PrivateRoute>
+        path:'payment',
+        element:<PrivateRoute><Payment></Payment></PrivateRoute>
       },
       {
         path:'paymenthistory',
@@ -89,6 +90,7 @@ const router = createBrowserRouter([
         path:'manageItems',
         element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
       }
+      
     ]
   }
 ]);
