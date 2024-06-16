@@ -4,10 +4,12 @@ import { FaCalendarAlt, FaHome } from "react-icons/fa";
 // import { GiStarsStack } from "react-icons/gi";
 import { TbStarsFilled } from "react-icons/tb";
 import useAdmin from "../hooks/useAdmin";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
   // todo : get isAdmin from database
   const [isAdmin] = useAdmin();
+  const [cart] = useCart()
   // console.log(isAdmin)
   return (
     <div className="flex min-h-full">
@@ -94,7 +96,7 @@ const Dashboard = () => {
                   className="flex items-center gap-1"
                   to={"/dashboard/cart"}
                 >
-                  <FaCartShopping></FaCartShopping> My Cart
+                  <FaCartShopping></FaCartShopping> My Cart ({cart.length})
                 </NavLink>
               </li>
               <li className="px-3 py-2">

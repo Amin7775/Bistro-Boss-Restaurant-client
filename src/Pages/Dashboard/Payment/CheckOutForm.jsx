@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const CheckOutForm = () => {
   const [clientSecret,setClientSecret]=useState('')
@@ -10,16 +11,18 @@ const CheckOutForm = () => {
   const elements = useElements();
   const [error,setError]=useState('')
   const axiosSecure = useAxiosSecure()
-  const [cart] = useCart()
+  const [cart,refetch] = useCart()
   const totalPrice = cart.reduce((total,item) => total + item.price,0)
   const {user} = useAuth()
   const [transactionId,setTransactionId] = useState('')
 
   useEffect(()=>{
-    axiosSecure.post('/create-payment-intent', {totalPrice})
+    if(totalPrice > 0){
+      axiosSecure.post('/create-payment-intent', {totalPrice})
     .then(res => {
       setClientSecret(res.data.clientSecret)
     })
+    }
   },[axiosSecure,totalPrice])
 
   const handleSubmit = async (event) => {
@@ -66,9 +69,17 @@ const CheckOutForm = () => {
     })
 
     if(confirmError){
-      console.log('confirm error')
+      // console.log('confirm error')
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "There Was an error.Try Again Later",
+        text: "Make sure you have items in your cart",
+        showConfirmButton: false,
+        timer: 2500
+      });
     }else{
-      console.log('payment intent', paymentIntent)
+      // console.log('payment intent', paymentIntent)
       if(paymentIntent.status === 'succeeded'){
         setTransactionId(paymentIntent.id)
       }
@@ -86,7 +97,16 @@ const CheckOutForm = () => {
     }
     
     const res = await axiosSecure.post('/payments', payment)
-    console.log(res)
+    refetch()
+    if(res?.data?.paymentResult?.insertedId){
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your Payment is Completed",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   };
 
   return (
